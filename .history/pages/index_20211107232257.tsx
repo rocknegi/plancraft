@@ -12,12 +12,11 @@ export interface Props {
 export default function index({ data }: Props) {
   const [images, setImages] = useState(data);
   const fetchImages = async () => {
-    //Fetch new 25 images
     try {
-      const res = await fetch("https://dog.ceo/api/breeds/image/random/25");
+      const res = await fetch("https://dog.ceo/api/breeds/image/random/2");
       const response = await res.json();
 
-      //update images state by creating a new array and merging the old images with the new ones
+      //update images by creating a new array and merging the old images with the new ones
       setImages((images) => [...images, ...response.message]);
     } catch (error) {
       console.error(error);
@@ -26,13 +25,12 @@ export default function index({ data }: Props) {
   return (
     <>
       <h1 className={indexStyles.heading}>DOGE</h1>
-
       {/* Infinite Scroll library */}
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
         hasMore={true}
-        loader={<h3 className={indexStyles.loader}>Loading More Doges.....</h3>}
+        loader={<h3 className={indexStyles.loader}>Loading.....</h3>}
       >
         {/* loop over the data received from the DOGE API */}
         <div className={indexStyles.wrapper}>
@@ -47,10 +45,10 @@ export default function index({ data }: Props) {
   );
 }
 
-//Fetch dog's images
+//fetch dog's images
 export const getStaticProps = async () => {
   try {
-    const res = await fetch("https://dog.ceo/api/breeds/image/random/50");
+    const res = await fetch("https://dog.ceo/api/breeds/image/random/1");
     const response = await res.json();
     return {
       props: { data: response.message },

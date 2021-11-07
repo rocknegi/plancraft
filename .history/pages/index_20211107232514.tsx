@@ -17,7 +17,7 @@ export default function index({ data }: Props) {
       const res = await fetch("https://dog.ceo/api/breeds/image/random/25");
       const response = await res.json();
 
-      //update images state by creating a new array and merging the old images with the new ones
+      //update images by creating a new array and merging the old images with the new ones
       setImages((images) => [...images, ...response.message]);
     } catch (error) {
       console.error(error);
