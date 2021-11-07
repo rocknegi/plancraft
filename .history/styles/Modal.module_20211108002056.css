@@ -1,0 +1,24 @@
+.img {
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
+  align-self: center;
+  object-fit: contain;
+}
+.container {
+  box-shadow: 0 8px 6px -6px black;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+.tools {
+  /* position: fixed; */
+  /* left: 0; */
+  /* top: 0; */
+  /* height: 100%; */
+  /* width: 100%; */
+  /* background-color: black; */
+}
