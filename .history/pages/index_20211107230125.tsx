@@ -12,9 +12,6 @@ export default function index({ data }: Props) {
   return (
     <>
       <h1 className={indexStyles.heading}>DOGE</h1>
-
-      {/* loop over the data received from the DOGE API */}
-
       <div className={indexStyles.wrapper}>
         {data.map((url, index) => (
           <div key={index}>
