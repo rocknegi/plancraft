@@ -1,8 +1,0 @@
-.wrapper {
-  max-width: 100rem;
-  margin: 4rem auto;
-  display: grid;
-  grid-gap: 1.5em;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-auto-rows: 500px;
-}

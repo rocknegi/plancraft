@@ -5,12 +5,12 @@ import homestyles from "../styles/Home.module.css";
 import Modal from "./Modal";
 
 //Prop type check
-export interface Props {
+interface Props {
   url: string;
   id: string;
 }
 
-export const listItem = atomFamily({
+const listItem = atomFamily({
   key: "listItem",
   default: (id: string) => ({ id, count: 0 }),
 });

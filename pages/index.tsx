@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
-import { atom, atomFamily, useRecoilState } from "recoil";
+import { atom, useRecoilState } from "recoil";
 import { v4 as uuid_v4 } from "uuid";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import DogeImage from "../components/DogeImage";
 import indexStyles from "../styles/Index.module.css";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 //Prop type check
-export interface Props {
+interface Props {
   data: string[];
 }
-
-export const imagesState = atom({
-  key: "list",
-  default: [{}],
-});
-export interface Object {
+interface Object {
   id: string;
   link: string;
 }
+
+const imagesState = atom({
+  key: "list",
+  default: [{}],
+});
+
 export default function Index({ data }: Props) {
   //convert the API data received as an array of strings to an object
   // with a uuid for identification
   const addCounter = (list: string[]): [{}] => {
-    let temp: [{}] = [];
+    let temp: any = [];
     list.map((item) => {
       const newItem: Object = {
         id: uuid_v4(),
@@ -66,7 +67,7 @@ export default function Index({ data }: Props) {
       >
         {/* loop over the data received from the DOGE API */}
         <div className={indexStyles.wrapper}>
-          {images.map(({ id, link }, index) => (
+          {images.map(({ id, link }: any, index: number) => (
             <DogeImage key={index} id={id} url={link} />
           ))}
         </div>

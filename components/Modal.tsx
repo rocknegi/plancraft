@@ -4,7 +4,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import modalStyle from "../styles/Modal.module.css";
 
 //Prop type check
-export interface Props {
+interface Props {
   url: string;
   toggleModal: (event: React.MouseEvent<HTMLElement>) => void;
 }

@@ -6,6 +6,8 @@
 .img:hover {
   cursor: pointer;
   border: 5px solid black;
+  opacity: 0.9;
+  transition: 0.3s;
 }
 .imgContainer {
   display: flex;
@@ -13,12 +15,12 @@
   align-items: center;
 }
 .count {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.4);
   position: relative;
-  top: -2.5rem;
+  top: -1.8rem;
   /* left: -30%; */
-  font-size: 2rem;
+  font-size: 1.5rem;
   z-index: 0;
   width: 100%;
-  padding: 0 2px;
+  padding: 0 5px;
 }
