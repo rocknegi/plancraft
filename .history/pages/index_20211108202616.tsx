@@ -13,7 +13,7 @@ export interface Props {
 
 export const imagesState = atom({
   key: "list",
-  default: [{}],
+  default: [],
 });
 export interface Object {
   id: string;
@@ -22,8 +22,8 @@ export interface Object {
 export default function Index({ data }: Props) {
   //convert the API data received as an array of strings to an object
   // with a uuid for identification
-  const addCounter = (list: string[]): [{}] => {
-    let temp: [{}] = [];
+  const addCounter = (list: string[]): [] => {
+    let temp: [] = [];
     list.map((item) => {
       const newItem: Object = {
         id: uuid_v4(),
@@ -66,8 +66,8 @@ export default function Index({ data }: Props) {
       >
         {/* loop over the data received from the DOGE API */}
         <div className={indexStyles.wrapper}>
-          {images.map(({ id, link }, index) => (
-            <DogeImage key={index} id={id} url={link} />
+          {images.map((item, index) => (
+            <DogeImage key={index} id={item.id} url={item.link} />
           ))}
         </div>
       </InfiniteScroll>

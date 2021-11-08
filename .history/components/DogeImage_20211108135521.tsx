@@ -7,7 +7,6 @@ import Modal from "./Modal";
 //Prop type check
 export interface Props {
   url: string;
-  id: string;
 }
 
 export const listItem = atomFamily({
@@ -15,23 +14,17 @@ export const listItem = atomFamily({
   default: (id: string) => ({ id, count: 0 }),
 });
 
-export default function DogeImage({ url, id }: Props) {
+export default function DogeImage({ url, key }: Props) {
+  console.log(key);
   const [modal, toggleModal] = useState<boolean>(false);
-  const [item, setItem] = useRecoilState(listItem(id));
-
+  const [item, setItem] = useRecoilState(listItem(key));
   //Handle visibility of the Modal
   const onImageClick = () => {
     toggleModal(!modal);
-
-    // Increment the count value on modal open
-    if (!modal) setItem((item) => ({ ...item, count: item.count + 1 }));
   };
   return (
     <>
-      <div className={homestyles.imgContainer}>
-        <img onClick={onImageClick} className={homestyles.img} src={url} />
-        <div className={homestyles.count}>Click Count: {item.count}</div>
-      </div>
+      <img onClick={onImageClick} className={homestyles.img} src={url} />
       {modal && <Modal toggleModal={onImageClick} url={url} />}
     </>
   );

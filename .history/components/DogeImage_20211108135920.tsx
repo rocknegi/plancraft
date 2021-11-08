@@ -18,20 +18,13 @@ export const listItem = atomFamily({
 export default function DogeImage({ url, id }: Props) {
   const [modal, toggleModal] = useState<boolean>(false);
   const [item, setItem] = useRecoilState(listItem(id));
-
   //Handle visibility of the Modal
   const onImageClick = () => {
     toggleModal(!modal);
-
-    // Increment the count value on modal open
-    if (!modal) setItem((item) => ({ ...item, count: item.count + 1 }));
   };
   return (
     <>
-      <div className={homestyles.imgContainer}>
-        <img onClick={onImageClick} className={homestyles.img} src={url} />
-        <div className={homestyles.count}>Click Count: {item.count}</div>
-      </div>
+      {/* <img onClick={onImageClick} className={homestyles.img} src={url} /> */}
       {modal && <Modal toggleModal={onImageClick} url={url} />}
     </>
   );

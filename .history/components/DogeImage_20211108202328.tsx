@@ -21,10 +21,10 @@ export default function DogeImage({ url, id }: Props) {
 
   //Handle visibility of the Modal
   const onImageClick = () => {
-    toggleModal(!modal);
-
-    // Increment the count value on modal open
+    // Increment the count value
     if (!modal) setItem((item) => ({ ...item, count: item.count + 1 }));
+
+    toggleModal(!modal);
   };
   return (
     <>

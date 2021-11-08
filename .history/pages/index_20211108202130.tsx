@@ -33,13 +33,10 @@ export default function Index({ data }: Props) {
     });
     return temp;
   };
-
   const [images, setImages] = useRecoilState(imagesState);
-
   useEffect(() => {
     setImages(addCounter(data));
   }, []);
-
   const fetchImages = async () => {
     //Fetch new 25 images
     try {
@@ -66,8 +63,8 @@ export default function Index({ data }: Props) {
       >
         {/* loop over the data received from the DOGE API */}
         <div className={indexStyles.wrapper}>
-          {images.map(({ id, link }, index) => (
-            <DogeImage key={index} id={id} url={link} />
+          {images.map((item, index) => (
+            <DogeImage key={index} id={item.id} url={item.link} />
           ))}
         </div>
       </InfiniteScroll>
