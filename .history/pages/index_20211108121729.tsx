@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { atom, useRecoilState } from "recoil";
 
 import DogeImage from "../components/DogeImage";
@@ -9,41 +9,21 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export interface Props {
   data: string[];
 }
-
 export const imagesState = atom({
   key: "images",
-  default: [{}],
+  default: [""],
 });
-export interface Object {
-  link: string;
-  counter: number;
-}
 export default function Index({ data }: Props) {
-  const addCounter = (list: string[]): [{}] => {
-    let temp: [{}] = [];
-    list.map((item) => {
-      const newItem: Object = {
-        link: item,
-        counter: 0,
-      };
-      temp.push(newItem);
-    });
-    console.log(temp);
-    return temp;
-  };
-  const [images, setImages] = useRecoilState(imagesState);
-  useEffect(() => {
-    setImages(addCounter(data));
-  }, []);
+  const [images, setImages] = useRecoilState(data);
+
   const fetchImages = async () => {
     //Fetch new 25 images
     try {
       const res = await fetch("https://dog.ceo/api/breeds/image/random/25");
       const response = await res.json();
-      //
-      const newItems = addCounter(response.message);
+
       //update images state by creating a new array and merging the old images with the new ones
-      setImages((images) => [...images, ...newItems]);
+      setImages((images) => [...images, ...response.message]);
     } catch (error) {
       console.error(error);
     }
@@ -63,7 +43,7 @@ export default function Index({ data }: Props) {
         <div className={indexStyles.wrapper}>
           {images.map((url, index) => (
             <div key={index}>
-              <DogeImage url={url.link} />
+              <DogeImage url={url} />
             </div>
           ))}
         </div>

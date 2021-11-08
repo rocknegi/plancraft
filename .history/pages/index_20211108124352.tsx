@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { atom, useRecoilState } from "recoil";
 
 import DogeImage from "../components/DogeImage";
@@ -9,7 +9,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export interface Props {
   data: string[];
 }
-
 export const imagesState = atom({
   key: "images",
   default: [{}],

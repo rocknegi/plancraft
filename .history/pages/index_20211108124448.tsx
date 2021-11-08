@@ -9,7 +9,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export interface Props {
   data: string[];
 }
-
 export const imagesState = atom({
   key: "images",
   default: [{}],

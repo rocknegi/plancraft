@@ -1,5 +1,5 @@
 .img {
-  min-width: 90vw;
+  min-width: 100vw;
   max-height: 90vh;
   object-fit: contain;
 }
