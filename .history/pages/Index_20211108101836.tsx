@@ -9,7 +9,7 @@ export interface Props {
   data: string[];
 }
 
-export default function Index({ data }: Props) {
+export default function index({ data }: Props) {
   const [images, setImages] = useState(data);
   const fetchImages = async () => {
     //Fetch new 25 images
