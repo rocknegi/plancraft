@@ -15,6 +15,7 @@ interface Object {
   link: string;
 }
 
+//Create an ATOM to use as component state
 const imagesState = atom({
   key: "list",
   default: [{}],
@@ -37,6 +38,7 @@ export default function Index({ data }: Props) {
 
   const [images, setImages] = useRecoilState(imagesState);
 
+  //Populate the state with the API data once on App load
   useEffect(() => {
     setImages(addCounter(data));
   }, []);

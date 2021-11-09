@@ -3,13 +3,14 @@ import { atomFamily, useRecoilState } from "recoil";
 
 import homestyles from "../styles/Home.module.css";
 import Modal from "./Modal";
-
+import { FaEye } from "react-icons/fa";
 //Prop type check
 interface Props {
   url: string;
   id: string;
 }
 
+//create unique ATOM for every image and add a count parameter
 const listItem = atomFamily({
   key: "listItem",
   default: (id: string) => ({ id, count: 0 }),
@@ -30,7 +31,9 @@ export default function DogeImage({ url, id }: Props) {
     <>
       <div className={homestyles.imgContainer}>
         <img onClick={onImageClick} className={homestyles.img} src={url} />
-        <div className={homestyles.count}>Click Count: {item.count}</div>
+        <div className={homestyles.count}>
+          <FaEye className={homestyles.icon} /> {item.count}
+        </div>
       </div>
       {modal && <Modal toggleModal={onImageClick} url={url} />}
     </>
